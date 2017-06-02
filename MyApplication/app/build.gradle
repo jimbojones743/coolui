@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.example.example.myapplication"
+        minSdkVersion 23
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        /*jackOptions {
+            enabled true
+        }*/
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+/*    packagingOptions {
+        exclude 'javax/servlet/resources/jsp_2_1.xsd'
+        exclude 'javax/servlet/jsp/resources/web-jsptaglibrary_2_1.xsd'
+        exclude 'javax/servlet/jsp/resources/web-jsptaglibrary_2_0.xsd'
+        exclude 'javax/servlet/jsp/resources/jspxml.xsd'
+        exclude 'javax/servlet/resources/jsp_2_0.xsd'
+        exclude 'javax/servlet/resources/web-app_2_4.xsd'
+    }*/
+    /*dexOptions {
+        incremental true
+    }*/
+    /*compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }*/
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compile.exclude group: 'commons-logging', module: 'commons-logging'
+    compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
+    compile.exclude group: "com.google.code.findbugs", module: "jsr305"
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.54'
+    //compile group: 'com.madgag.spongycastle', name: 'core', version: '1.54.0.0'
+    //compile group: 'com.madgag.spongycastle', name: 'prov', version: '1.54.0.0'
+    compile 'com.google.guava:guava:19.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile files('libs/Clusion-1.0-SNAPSHOT.jar')
+}
